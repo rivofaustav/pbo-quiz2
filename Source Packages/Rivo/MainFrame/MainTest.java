@@ -6,16 +6,27 @@ package Rivo.MainFrame;
  * @author Rivo
  */
 
+import Rivo.shop.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 
 public class MainTest extends javax.swing.JFrame {
     private int id = 0;
     private String code;
+    private DefaultComboBoxModel comboboxModel;
+    private DefaultTableModel tabelModel;
+    private ArrayList<Item> keranjang = new ArrayList<>();
     
     public MainTest() {
+
         initComponents();
     }
+
+
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
