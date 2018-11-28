@@ -40,6 +40,60 @@ public class MainTest extends javax.swing.JFrame {
      private void decId(){//decrement id
          this.id -=1;
      }
+     
+     private Object[] addItem(String nama, int jumlah){
+         float harga = 0;
+         ComboModel items = new ComboModel();
+         for(int i = 0; i < items.getNames().size(); i++){
+             if(nama.equalsIgnoreCase(items.getNames().get(i))){
+                 harga = items.getPrices().get(i);
+             }
+         }
+         Object[] obj = {
+             nama, harga, jumlah
+         };
+         return obj;
+     }
+     
+     private void updateJumlah(String nama, int add){//fungsi update jumlah
+         ArrayList<String> item = new ArrayList<>();
+         for (int i = 0; i < tabelModel.getRowCount(); i++){
+             item.add(tabelModel.getValueAt(i, 0).toString());
+         }
+         for (int i = 0; i < item.size(); i++){
+             if(item.get(i).equals(nama)){
+                 int jumlah = new Integer(tabelModel.getValueAt(i, 2).toString());
+                 tabelModel.setValueAt(jumlah+add, i, 2);
+             }
+         }
+     }
+     
+     private boolean isDuplicate(String nama){//untuk mengecek apakah barang yang dipilih adalah duplikat
+         boolean result = false;
+         ArrayList<String> item = new ArrayList<>();
+         for(int i = 0; i < tabelModel.getRowCount(); i++){
+             item.add(tabelModel.getValueAt(i, 0).toString());
+         }
+         for(String i : item){
+             if (i.equals(nama)){
+                 result = true;
+             }
+         }
+         return result;
+     }
+     
+     private boolean isEmpty(){//untuk mengecek apakah tabel kosong
+         return this.tableList.getModel().getRowCount()<=0;
+     }
+     private void dsblCart(){//disable button save dan remove saat tabel kosong
+         if(isEmpty()){
+             this.buttonSave.setEnabled(false);
+             this.buttonRemove.setEnabled(false);
+         }else{
+             this.buttonSave.setEnabled(true);
+             this.buttonRemove.setEnabled(true);
+         }
+     }
 
     
     
