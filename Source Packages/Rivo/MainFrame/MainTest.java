@@ -20,7 +20,7 @@ public class MainTest extends javax.swing.JFrame {
     private ArrayList<Item> keranjang = new ArrayList<>();
     
     public MainTest() {
-
+    
         initComponents();
     }
 
