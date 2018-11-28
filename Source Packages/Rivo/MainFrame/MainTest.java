@@ -20,10 +20,26 @@ public class MainTest extends javax.swing.JFrame {
     private ArrayList<Item> keranjang = new ArrayList<>();
     
     public MainTest() {
-    
+        ComboModel comboModel = new ComboModel();
+        this.comboboxModel = new DefaultComboBoxModel<>(comboModel.getNames().toArray());//set comboboxlModel
+        TabelModel tabelModel = new TabelModel();
+        this.tabelModel = new DefaultTableModel(tabelModel.getColumnName(), 0);//set tabelModel
+        
         initComponents();
     }
-
+    
+    private String setCode(){
+        this.incId();
+        String dt = new SimpleDateFormat("yyMMdd").format(new Date());//set tanggal sekarang dalam string
+        this.code = String.format(dt + "%02", this.id);//menggabungkan dengan id
+        return code;
+    }
+     private void incId() {//increment id
+        this.id += 1; 
+    }
+     private void decId(){//decrement id
+         this.id -=1;
+     }
 
     
     
@@ -268,4 +284,6 @@ public class MainTest extends javax.swing.JFrame {
     private javax.swing.JTextField textCode;
     private javax.swing.JTextField textJmlItem;
     // End of variables declaration//GEN-END:variables
+
+   
 }
