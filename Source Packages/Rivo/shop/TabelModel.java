@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Rivo.shop;
 
 /**
@@ -10,5 +6,16 @@ package Rivo.shop;
  * @author Rivo
  */
 public class TabelModel {
+    private String[] columns; //array string vatiabel untuk kolom nama
+
+    public TabelModel() {//constructor
+        this.columns = new String[]{
+            "Nama", "Harga", "Jumlah"
+        };
+    }
+    
+    public String[] getColumnName(){//getter column
+        return this.columns;
+    }
     
 }
