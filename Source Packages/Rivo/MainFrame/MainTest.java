@@ -29,10 +29,10 @@ public class MainTest extends javax.swing.JFrame {
         initComponents();
     }
     
-    private String setCode(){
+    private String setCode() {
         this.incId();
         String dt = new SimpleDateFormat("yyMMdd").format(new Date());//set tanggal sekarang dalam string
-        this.code = String.format(dt + "%02", this.id);//menggabungkan dengan id
+        this.code = String.format(dt+"%02d", this.id);//menggabungkan dengan id
         return code;
     }
      private void incId() {//increment id
@@ -141,6 +141,7 @@ public class MainTest extends javax.swing.JFrame {
 
         jLabel2.setText("Items");
 
+        textCode.setEnabled(false);
         textCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textCodeActionPerformed(evt);
@@ -154,7 +155,7 @@ public class MainTest extends javax.swing.JFrame {
             }
         });
 
-        comboItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboItem.setModel(this.comboboxModel);
         comboItem.setEnabled(false);
         comboItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,7 +202,7 @@ public class MainTest extends javax.swing.JFrame {
             }
         });
 
-        tableList.setEnabled(false);
+        tableList.setModel(this.tabelModel);
         jScrollPane2.setViewportView(tableList);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
