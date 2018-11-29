@@ -313,7 +313,21 @@ public class MainTest extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonRemoveActionPerformed
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
-        // TODO add your handling code here:
+        try{
+            for(int i = 0; i < tabelModel.getRowCount(); i++){
+                String nama = tabelModel.getValueAt(i, 0).toString();
+                float harga = new Float(tabelModel.getValueAt(i, 1).toString());//tambah tiap hasil ke keranjang
+                int jumlah = new Integer(tabelModel.getValueAt(i, 2).toString());
+                this.keranjang.add(new Item(nama, harga, jumlah));
+            }
+            Transaksi trs = new Transaksi(this.code, this.keranjang);
+            StringBuilder str = new StringBuilder();
+            str.append(trs.print());//append output transaksi
+            JOptionPane.showMessageDialog(this, str, "Detail Transaksi", JOptionPane.INFORMATION_MESSAGE);//panggil dialog
+            newTransaction();//transaksi baru
+        }catch(Exception e){
+            
+        }
     }//GEN-LAST:event_buttonSaveActionPerformed
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
