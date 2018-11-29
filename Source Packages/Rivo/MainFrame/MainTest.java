@@ -94,6 +94,20 @@ public class MainTest extends javax.swing.JFrame {
              this.buttonRemove.setEnabled(true);
          }
      }
+     
+     private void newTransaction(){//transaksi baru setelah transaksi selesai
+         this.textJmlItem.setText("");
+         this.textCode.setText("");
+         this.buttonNew.setEnabled(true);
+         this.buttonSave.setEnabled(false);
+         this.buttonAdd.setEnabled(false);
+         this.buttonCancel.setEnabled(false);
+         this.buttonRemove.setEnabled(false);
+         this.textJmlItem.setEnabled(false);
+         this.comboItem.setEnabled(false);
+         this.tabelModel.setRowCount(0);
+         this.keranjang.clear();
+     }
 
     
     
@@ -257,7 +271,7 @@ public class MainTest extends javax.swing.JFrame {
         this.buttonAdd.setEnabled(true);
         this.textJmlItem.setEnabled(true);
         this.comboItem.setEnabled(true);
-        //this.textCode.setText(this.());
+        this.textCode.setText(this.setCode());
         
     }//GEN-LAST:event_buttonNewActionPerformed
 
@@ -286,7 +300,8 @@ public class MainTest extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSaveActionPerformed
 
     private void buttonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelActionPerformed
-        // TODO add your handling code here:
+        newTransaction();
+        this.decId();
     }//GEN-LAST:event_buttonCancelActionPerformed
 
     /**
