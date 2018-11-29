@@ -10,6 +10,7 @@ import Rivo.shop.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class MainTest extends javax.swing.JFrame {
@@ -280,7 +281,14 @@ public class MainTest extends javax.swing.JFrame {
     }//GEN-LAST:event_comboItemActionPerformed
 
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
-        // TODO add your handling code here:
+        String nama = this.comboItem.getSelectedItem().toString();//get selected item dari comboItem
+        int jumlah = new Integer(this.textJmlItem.getText());//textJmlItem iteger
+        if(isDuplicate(nama)){
+            updateJumlah(nama, jumlah);//menambah kolom jumlah dengan iputan jumlah baru
+        }else {
+            tabelModel.addRow(addItem(nama, jumlah));
+        }
+        this.dsblCart();
     }//GEN-LAST:event_buttonAddActionPerformed
 
     private void textCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCodeActionPerformed
@@ -292,7 +300,16 @@ public class MainTest extends javax.swing.JFrame {
     }//GEN-LAST:event_textJmlItemActionPerformed
 
     private void buttonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveActionPerformed
-        // TODO add your handling code here:
+        if(tableList.getSelectedRow()<0){
+            String str = "Pilih item yang ingin dihapus terlebih dahulu!";//warning untuk barang yang ingin dihapus jika tidak dipilih
+            JOptionPane.showMessageDialog(this, str, "Information", JOptionPane.INFORMATION_MESSAGE);
+        }else {
+            int count = tableList.getSelectedRows().length;//hapus barang sesuai yang dipilih
+            for(int i = 0; i < count; i++){
+                tabelModel.removeRow(tableList.getSelectedRow());
+            }
+        }
+        this.dsblCart();
     }//GEN-LAST:event_buttonRemoveActionPerformed
 
     private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
