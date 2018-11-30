@@ -284,7 +284,7 @@ public class MainTest extends javax.swing.JFrame {
     private void buttonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddActionPerformed
         String nama = this.comboItem.getSelectedItem().toString();//get selected item dari comboItem
         int jumlah = new Integer(this.textJmlItem.getText());//textJmlItem iteger
-        if(isDuplicate(nama)){
+        if(isDuplicate(nama)){//cek dupklikat
             updateJumlah(nama, jumlah);//menambah kolom jumlah dengan iputan jumlah baru
         }else {
             tabelModel.addRow(addItem(nama, jumlah));

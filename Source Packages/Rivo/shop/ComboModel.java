@@ -12,7 +12,7 @@ public class ComboModel {
     private HashMap<String,Float> items = new HashMap<>();
 
     public ComboModel() {
-        this.items.put("Kopi", new Float(10000));
+        this.items.put("Kopi", new Float(10000));//item item toko
         this.items.put("Gula", new Float(15000));
         this.items.put("Susu", new Float(20000));
     }
